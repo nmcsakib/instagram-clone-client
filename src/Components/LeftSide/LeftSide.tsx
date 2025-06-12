@@ -4,8 +4,12 @@ import { CiCompass1, CiVideoOn } from "react-icons/ci";
 import MenuBtn from "./MenuBtn";
 import { BsMenuButton, BsMessenger, BsPlusSquare } from "react-icons/bs";
 import { BiHeart, BiUserCircle } from "react-icons/bi";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const LeftSide = () => {
+  const auth = useContext(AuthContext);
+  console.log(auth?.user?.photoURL);
   return (
     <div className="border-r border-white/30 w-full overflow-y-hidden h-screen font-[500]">
       <Logo />
@@ -40,7 +44,8 @@ const LeftSide = () => {
           Create
         </MenuBtn>
         <MenuBtn location="/profile">
-          <BiUserCircle />
+          {/* <img src={auth?.user?.photoURL || ''} className="w-8 h-8 rounded-full" alt="profile" /> */}
+         { auth?.user ?  <p className="w-8 h-8 flex justify-center items-center rounded-full bg-blue-500 text-center">{auth?.user?.displayName?.slice()[0]}</p> : <BiUserCircle/>}
           Profile
         </MenuBtn>
         <MenuBtn location="/">

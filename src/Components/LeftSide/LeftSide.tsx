@@ -10,7 +10,7 @@ const LeftSide = () => {
         <div className="border-r border-white/30 w-full overflow-y-hidden h-screen font-[500]">
             <Logo/>
             {/* Navbar */}
-           <div className=" pl-5 flex flex-col justify-center items-center gap-4">
+           <div className=" pl-5 pr-3 flex flex-col justify-center items-center gap-4">
          <MenuBtn><CgHome/> Home</MenuBtn>
           <MenuBtn>
             <CgSearch className="inline-block mr-1 text-white" />

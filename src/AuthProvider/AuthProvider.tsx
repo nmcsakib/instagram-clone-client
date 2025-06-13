@@ -1,21 +1,23 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase.init";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User, type UserCredential } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, type User, type UserCredential } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 type AuthContextType = {
   user: User | null;
   signInWithGoogle: () => Promise<UserCredential>;
-  signInWithEmailPass: (email: string, password: string) => Promise<UserCredential>;
+  createUserWithEmailPass: (email: string, password: string) => Promise<UserCredential>;
   logOut: () => Promise<unknown>;
   sakib: string,
   loading: boolean,
-  setUser: React.Dispatch<React.SetStateAction<User | null>>
+  setUser: React.Dispatch<React.SetStateAction<User | null>>,
+  signIn: (email: string, password: string) => Promise<UserCredential>
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType | null>(null);
-
 const auth = getAuth(app);
+export const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 
@@ -29,6 +31,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  const signIn = (email: string, password: string) => {
+    setLoading(true)
+    return signInWithEmailAndPassword(auth, email, password)
   }
 
   const signInWithGoogle = () => {
@@ -47,8 +54,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     sakib,
     logOut,
     loading,
-    signInWithEmailPass: createUserWithEmailPass,
-    setUser
+    createUserWithEmailPass,
+    setUser,
+    signIn
   };
 
   useEffect(() => {

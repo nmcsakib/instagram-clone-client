@@ -1,6 +1,5 @@
-import { BiHeart, BiPaperPlane } from "react-icons/bi";
+import { BiBookmark, BiHeart, BiPaperPlane } from "react-icons/bi";
 import { BsChatLeft, BsThreeDots } from "react-icons/bs";
-import { LuBookMarked } from "react-icons/lu";
 
 const Card = () => {
 return (
@@ -17,7 +16,7 @@ return (
     
     <div className="cursor-pointer"><BsThreeDots/></div>
 </div>
-  <figure>
+  <figure className="min-h-[200px]">
     <img
       src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
       alt="Shoes" />
@@ -28,7 +27,7 @@ return (
     <BsChatLeft/>
     <BiPaperPlane/>
    </div>
-    <LuBookMarked/>
+    <BiBookmark/>
   </div>
     <p className="font-bold pl-3 text-sm">34,945 likes</p>
   <div className="pl-3 text-sm pt-3">

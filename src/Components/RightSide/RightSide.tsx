@@ -7,6 +7,7 @@ const RightSide = () => {
 
     const auth = useContext(AuthContext);
     const {user} = auth!;
+    console.log(user);
     return (
         <div className="text-center">
             <div className="flex items-center mt-10">
@@ -18,11 +19,11 @@ const RightSide = () => {
     </p>
     <p className="text-gray-500 mt-1">{user?.displayName}</p>
  </div>
- <button onClick={()=>(document.getElementById('my_modal_3') as HTMLFormElement).showModal()} className="text-blue-500 pl-3 text-sm cursor-pointer">Switch</button>
+ <button onClick={()=>(document.getElementById('loginPopUP') as HTMLFormElement).showModal()} className="text-blue-500 pl-3 text-sm cursor-pointer">Switch</button>
 </div>
 
 {/* You can open the modal using document.getElementById('ID').showModal() method */}
-<dialog id="my_modal_3" className="modal">
+<dialog id="loginPopUP" className="modal">
   <div className="modal-box bg-[#262626]">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}

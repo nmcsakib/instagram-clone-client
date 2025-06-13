@@ -3,7 +3,8 @@ import App from "../App";
 import Profile from "../pages/Profile/Profile";
 import RightSide from "../Components/RightSide/RightSide";
 import MainContent from "../Components/MainContent/MainContent";
-import Login from "../pages/Login/Login";
+import AuthForm from "../pages/Login/AuthForm";
+import ProfileEdit from "../pages/ProfileEdit/ProfileEdit";
 
 export const router = createBrowserRouter([
     {
@@ -20,11 +21,15 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile />
+            },
+            {
+                path: '/accounts/edit',
+                element: <ProfileEdit />
             }
         ]
     },
     {
-        path: '/accounts/login',
-        element: <Login/>
+        path: '/accounts/authentication',
+        element: <AuthForm />
     }
 ])
